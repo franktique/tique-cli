@@ -8,7 +8,11 @@ import React from 'react';
 import { Box, Text } from 'ink';
 import Gradient from 'ink-gradient';
 import { Colors } from '../colors.js';
-import { shortAsciiLogo, longAsciiLogo, tinyAsciiLogo } from './AsciiArt.js';
+import {
+  shortiqueCliAsciiLogo,
+  longTiqueCliAsciiLogo,
+  tinyTiqueAsciiLogo,
+} from './AsciiArt.js';
 import { getAsciiArtWidth } from '../utils/textUtils.js';
 import { useTerminalSize } from '../hooks/useTerminalSize.js';
 
@@ -25,17 +29,17 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const { columns: terminalWidth } = useTerminalSize();
   let displayTitle;
-  const widthOfLongLogo = getAsciiArtWidth(longAsciiLogo);
-  const widthOfShortLogo = getAsciiArtWidth(shortAsciiLogo);
+  const widthOfLongLogo = getAsciiArtWidth(longTiqueCliAsciiLogo);
+  const widthOfShortLogo = getAsciiArtWidth(shortiqueCliAsciiLogo);
 
   if (customAsciiArt) {
     displayTitle = customAsciiArt;
   } else if (terminalWidth >= widthOfLongLogo) {
-    displayTitle = longAsciiLogo;
+    displayTitle = longTiqueCliAsciiLogo;
   } else if (terminalWidth >= widthOfShortLogo) {
-    displayTitle = shortAsciiLogo;
+    displayTitle = shortiqueCliAsciiLogo;
   } else {
-    displayTitle = tinyAsciiLogo;
+    displayTitle = tinyTiqueAsciiLogo;
   }
 
   const artWidth = getAsciiArtWidth(displayTitle);
